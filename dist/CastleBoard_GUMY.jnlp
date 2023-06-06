@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="CastleBoard_GUMY.jnlp">
+  <information>
+    <title>CastleBoard_GUMY</title>
+    <vendor>PA</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="CastleBoard_GUMY.jar" size="8696866" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="app.App"  name="CastleBoard_GUMY" />
+  <update check="always"/>
+</jnlp>

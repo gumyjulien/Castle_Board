@@ -1,0 +1,227 @@
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+    -fx-background-color: #A0EAFF;
+    -fx-background-radius: 20;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #00C1FF;
+    -fx-background-radius: 20;
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #0074FF;
+    -fx-background-radius: 20;
+}
+
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 0.0 10.0 0.0;
+
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 10.0 0.0 0.0;
+
+}
+
+ .scroll-bar .increment-arrow,
+ .scroll-bar .decrement-arrow{
+    -fx-shape : " ";    
+    -fx-padding :0.15em 0.0;
+}
+
+ .scroll-bar:vertical .increment-arrow,
+ .scroll-bar:vertical .decrement-arrow{
+    -fx-shape : " ";    
+    -fx-padding :0.0 0.15em;
+}
+
+.pgbCartes .track {
+    -fx-background-color: #ABF0FF;
+    -fx-background-radius: 10;
+}
+
+.pgbCartes .bar {
+    -fx-background-insets: 0; 
+    -fx-background-color: #00C8FF;
+    -fx-background-radius: 10;
+}
+
+.pgbCartesAmel .bar {
+    -fx-background-insets: 0; 
+    -fx-background-color: #09EE02;
+    -fx-background-radius: 10;
+}
+
+.pgbMissionEnCours .track {
+    -fx-background-color: #FFDE8A;
+    -fx-background-radius: 5;
+}
+
+
+.pgbMissionEnCours .bar {
+    -fx-background-insets: 0; 
+    -fx-background-color: #FF9E00;
+    -fx-background-radius: 5;
+}
+
+
+.pgbMissionTerminee .bar {
+    -fx-background-insets: 0; 
+    -fx-background-color: #42FF00;
+    -fx-background-radius: 5;
+}
+
+.pgbObjectifTermine .bar {
+    -fx-background-insets: 0;
+    -fx-background-color: #93FF00;
+    -fx-background-radius: 15;
+}
+
+.pgbObjectifTermine .track {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+    -fx-background-radius: 15;
+}
+
+.pgbFondMissionTerminee .bar {
+    -fx-background-insets: 0;
+    -fx-background-color: #39DB00;
+    -fx-background-radius: 15;
+}
+
+.pgbFondMissionTerminee .track {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+    -fx-background-radius: 15;
+}
+
+.sclMissions > .viewport {
+    -fx-background-color: transparent;
+}
+
+.sclMissions {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
+
+.pnMissionEnCours {
+    -fx-background-color: #FFC900;
+    -fx-background-radius: 15;
+}
+
+.pnMissionTerminee {
+    -fx-background-color: #39DB00;
+    -fx-background-radius: 15;
+}
+
+.pnRecompenseMissionEnCours {
+    -fx-background-color: #FFBD00;
+    -fx-background-radius: 15;
+}
+
+.pnRecompenseMissionTerminee {
+    -fx-background-color: #31BE00;
+    -fx-background-radius: 15;
+}
+
+.pnSectionMission {
+    -fx-background-color: grey;
+    -fx-background-radius: 10;
+}
+
+.pnObjFacile {
+    -fx-background-color: #B3FFA0;
+    -fx-background-radius: 20;
+}
+
+.pnObjMoyen {
+    -fx-background-color: #FFD676;
+    -fx-background-radius: 20;
+}
+
+.pnObjDifficile {
+    -fx-background-color: #FF9A77;
+    -fx-background-radius: 20;
+}
+
+.pnObjExpert {
+    -fx-background-color: #808080;
+    -fx-background-radius: 20;
+}
+
+.btnAccepter, 
+.btnBloque,
+.btnRefuser, 
+.btnAmeliorer, 
+.btnMenu {
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-width: 3;
+}
+
+.btnAccepter {
+    -fx-background-color: skyblue;
+    -fx-border-color: white;
+}
+
+.btnRefuser {
+    -fx-background-color: red;
+    -fx-border-color: white;
+}
+
+.btnBloque {
+    -fx-background-color: lightgrey;
+    -fx-border-color: white;
+}
+
+.btnAmeliorer {
+    -fx-background-color: gold;
+    -fx-border-color: orange;
+}
+
+.btnMenu {
+    -fx-background-color: #009EFF;
+    -fx-border-color: blue;
+}
+
+.pnMissionRecapBadges {
+    -fx-background-color: lightblue;
+    -fx-background-radius: 10;
+}
+
+.pnOffreClassique {
+    -fx-background-color: lightblue;
+    -fx-background-radius: 10;
+}
+
+.pnOffreCombo {
+    -fx-background-color: orange;
+    -fx-background-radius: 10;
+}
+
+.pnOffreCostume {
+    -fx-background-color: #ffcc32;
+    -fx-background-radius: 10;
+}
+
+.hbOffrePrix {
+    -fx-background-color: #fff000;
+    -fx-background-radius: 15;
+    -fx-border-radius: 10;
+    -fx-border-width: 3;
+    -fx-border-color: orange;
+}

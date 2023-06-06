@@ -1,0 +1,2590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pnRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.presentation.MainCtrl">
+   <children>
+      <Pane fx:id="pnChargement" layoutX="-1.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" visible="false">
+         <children>
+            <ImageView fx:id="imgFond" fitHeight="700.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/fondChargement.png" />
+               </image></ImageView>
+            <ProgressBar fx:id="pgbLoading" layoutX="201.0" layoutY="552.0" prefHeight="42.0" prefWidth="214.0" progress="0.0" visible="false" />
+            <Label fx:id="lblChargement" alignment="CENTER" contentDisplay="CENTER" layoutX="119.0" layoutY="594.0" onMouseClicked="#demarrerChargement" prefHeight="53.0" prefWidth="362.0" text="Touchez pour jouer" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label layoutX="23.0" layoutY="660.0" text="par Julien Gumy" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="527.0" layoutY="660.0" text="v 0.1.2" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="pnMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-color: #A5FFA5;" visible="false">
+         <children>
+            <Button fx:id="btnEquipe" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="564.0" mnemonicParsing="false" onAction="#ouvrirEquipe" prefHeight="110.0" prefWidth="123.0" styleClass="btnMenu" stylesheets="@../../resources/css/mesStyles.css" text="Équipe" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="85.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesCartes/logo.png" />
+                     </image></ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnMissions" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="464.0" layoutY="564.0" mnemonicParsing="false" onAction="#ouvrirMissions" prefHeight="110.0" prefWidth="123.0" styleClass="btnMenu" stylesheets="@../../resources/css/mesStyles.css" text="Missions" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="85.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesMissions/logo.png" />
+                     </image></ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnBadges" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="490.0" layoutY="463.0" mnemonicParsing="false" onAction="#ouvrirBadges" prefHeight="84.0" prefWidth="97.0" styleClass="btnMenu" stylesheets="@../../resources/css/mesStyles.css" text="Badges" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesBadges/imgOr.png" />
+                     </image></ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ScrollPane hbarPolicy="NEVER" layoutX="171.0" layoutY="47.0" prefHeight="637.0" prefWidth="261.0" rotate="180.0" vbarPolicy="NEVER">
+               <content>
+                  <Pane fx:id="pnCarteLevels" prefHeight="1074.0" prefWidth="260.0" rotate="180.0" />
+               </content>
+            </ScrollPane>
+            <Button fx:id="btnBoutique" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="466.0" mnemonicParsing="false" onAction="#ouvrirBoutique" prefHeight="84.0" prefWidth="97.0" styleClass="btnMenu" stylesheets="@../../resources/css/mesStyles.css" text="Boutique" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesRecompenses/imgCoffreRoyal.png" />
+                     </image></ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnNotifBoutique" ellipsisString="99" layoutX="8.0" layoutY="457.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#ouvrirBoutique" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: red;" text="99" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnNotifEquipe" ellipsisString="99" layoutX="8.0" layoutY="556.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#ouvrirEquipe" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: red;" text="99" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnNotifBadges" ellipsisString="99" layoutX="483.0" layoutY="456.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#ouvrirBadges" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: red;" text="99" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnNotifMissions" ellipsisString="99" layoutX="458.0" layoutY="556.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#ouvrirMissions" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: red;" text="99" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <VBox fx:id="vbRessources" layoutX="486.0" layoutY="17.0" prefHeight="103.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <Pane prefHeight="24.0" prefWidth="100.0" style="-fx-background-color: lightgrey; -fx-background-radius: 25;">
+                     <children>
+                        <Label fx:id="lblRessPieces" layoutX="22.0" prefHeight="25.0" prefWidth="73.0" text="1000" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="-16.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="24.0" prefWidth="100.0" style="-fx-background-color: lightgrey; -fx-background-radius: 25;">
+                     <children>
+                        <Label fx:id="lblRessRubis" layoutX="22.0" prefHeight="25.0" prefWidth="73.0" text="1000" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="-16.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesRecompenses/imgRubis.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <Button fx:id="btnDuel" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="492.0" layoutY="136.0" mnemonicParsing="false" onAction="#ouvrirDuel" prefHeight="84.0" prefWidth="97.0" styleClass="btnMenu" stylesheets="@../../resources/css/mesStyles.css" text="Duel" textFill="WHITE" visible="false">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/logoJeu2.png" />
+                     </image></ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fx:id="imgFondQuitterProgBadges" fitHeight="700.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/fondNoir.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Pane fx:id="pnProgressionBadges" layoutX="86.0" layoutY="69.0" prefHeight="562.0" prefWidth="432.0" style="-fx-background-color: lightgrey; -fx-background-radius: 15;" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="31.0" layoutY="24.0" prefHeight="58.0" prefWidth="370.0" text="Progression des badges" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane hbarPolicy="NEVER" layoutX="41.0" layoutY="98.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="351.0" styleClass="sclMissions" stylesheets="@../../resources/css/mesStyles.css" vbarPolicy="NEVER">
+                     <content>
+                        <Pane fx:id="pnListeProgressionBadges" prefHeight="408.0" prefWidth="351.0" style="-fx-background-color: #DDDDDD; -fx-background-radius: 15;">
+                           <children>
+                              <VBox fx:id="vbProgressionBadges" layoutX="13.0" layoutY="8.0" prefHeight="345.0" prefWidth="326.0" spacing="5.0">
+                                 <children>
+                                    <Pane prefHeight="32.0" prefWidth="326.0" styleClass="pnSectionMission" stylesheets="@../../resources/css/mesStyles.css">
+                                       <children>
+                                          <Label layoutX="56.0" layoutY="4.0" prefHeight="25.0" prefWidth="261.0" text="Maîtrise de votre Barbare" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="9.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesBadges/imgManquant.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="16.0" layoutY="5.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesPersos/Barbare/Default/logo.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Pane>
+                                    <Pane prefHeight="49.0" prefWidth="326.0" style="-fx-background-color: lightblue; -fx-background-radius: 15;">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="15.0" prefHeight="20.0" prefWidth="214.0" text="5 dégât(s) infligés en une partie" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="237.0" layoutY="9.0" prefHeight="32.0" prefWidth="60.0" text="+ 50" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="299.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPointDeMaitrise.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="32.0" prefWidth="326.0" styleClass="pnSectionMission" stylesheets="@../../resources/css/mesStyles.css">
+                                       <children>
+                                          <Label layoutX="56.0" layoutY="4.0" prefHeight="25.0" prefWidth="261.0" text="Maîtrise de votre Bélier" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="9.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesBadges/imgOr.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="16.0" layoutY="5.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesPersos/Barbare/Default/logo.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Pane>
+                                    <Pane prefHeight="49.0" prefWidth="326.0" style="-fx-background-color: lightblue; -fx-background-radius: 15;">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="15.0" prefHeight="20.0" prefWidth="214.0" text="Jouer une partie" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="237.0" layoutY="9.0" prefHeight="32.0" prefWidth="60.0" text="+ 15" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="299.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPointDeMaitrise.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="49.0" prefWidth="326.0" style="-fx-background-color: lightblue; -fx-background-radius: 15;">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="15.0" prefHeight="20.0" prefWidth="214.0" text="Compléter un niveau" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" ellipsisString="+9999" layoutX="237.0" layoutY="9.0" prefHeight="32.0" prefWidth="60.0" text="+ 100" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="299.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPointDeMaitrise.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgFondQuitter" fitHeight="700.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../resources/images/fondNoir.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Pane fx:id="pnDetailsNiveau" layoutX="55.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="500.0" visible="false">
+         <children>
+            <ImageView fx:id="imgFond" fitHeight="580.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesNiveaux/bordure.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblNumeroNiv" layoutX="172.0" layoutY="27.0" text="Niveau X" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnJouer" layoutX="172.0" layoutY="491.0" mnemonicParsing="false" onAction="#lancerPartie" prefHeight="53.0" prefWidth="157.0" style="-fx-background-color: #4C7AFF; -fx-background-radius: 15;" text="Jouer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <GridPane layoutX="70.0" layoutY="99.0" prefHeight="53.0" prefWidth="362.0" style="-fx-background-color: #C3D3FF; -fx-background-radius: 15;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="101.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="268.0" minWidth="10.0" prefWidth="261.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Équipe adverse" textFill="WHITE" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <HBox fx:id="hbEquipeAdverse" alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="261.0" spacing="15.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </HBox>
+               </children>
+            </GridPane>
+            <VBox alignment="TOP_CENTER" layoutX="191.0" layoutY="168.0" prefHeight="296.0" prefWidth="241.0" spacing="10.0">
+               <children>
+                  <Pane fx:id="pnObj1" prefHeight="87.0" prefWidth="241.0" style="-fx-background-color: #808080; -fx-background-radius: 20;">
+                     <children>
+                        <Label fx:id="lblObj1" layoutX="14.0" layoutY="14.0" prefHeight="63.0" prefWidth="157.0" text="Infliger 3 dégâts avec le Barbare" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Pane fx:id="pnRecObj1" layoutX="178.0" layoutY="17.0" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #545454; -fx-background-radius: 15;">
+                           <children>
+                              <ImageView fx:id="imgRecObj1" fitHeight="42.0" fitWidth="40.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesRecompenses/imgSacoche.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="lblRecObj1" alignment="CENTER_RIGHT" ellipsisString="" layoutX="-4.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="54.0" text="1" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblRegionObj1" alignment="CENTER" layoutX="-1.0" layoutY="-13.0" prefHeight="15.0" prefWidth="54.0" text="Région 1" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pnObj2" prefHeight="87.0" prefWidth="241.0" style="-fx-background-color: #5DFF84; -fx-background-radius: 20;">
+                     <children>
+                        <Label fx:id="lblObj2" layoutX="14.0" layoutY="14.0" prefHeight="63.0" prefWidth="157.0" text="Infliger 3 dégâts avec le Barbare" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Pane fx:id="pnRecObj2" layoutX="178.0" layoutY="17.0" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #53DF75; -fx-background-radius: 15;">
+                           <children>
+                              <ImageView fx:id="imgRecObj2" fitHeight="42.0" fitWidth="40.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="lblRecObj2" alignment="CENTER_RIGHT" ellipsisString="" layoutX="-4.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="54.0" text="2" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblRegionObj2" alignment="CENTER" layoutX="-1.0" layoutY="-13.0" prefHeight="15.0" prefWidth="54.0" text="Région 1-2" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pnObj3" prefHeight="87.0" prefWidth="241.0" style="-fx-background-color: #5DFF84; -fx-background-radius: 20;">
+                     <children>
+                        <Label fx:id="lblObj3" layoutX="14.0" layoutY="14.0" prefHeight="63.0" prefWidth="157.0" text="Infliger 3 dégâts avec le Barbare" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Pane fx:id="pnRecObj3" layoutX="178.0" layoutY="17.0" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #84D182; -fx-background-radius: 15;">
+                           <children>
+                              <ImageView fx:id="imgRecObj3" fitHeight="42.0" fitWidth="40.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="lblRecObj3" alignment="CENTER_RIGHT" ellipsisString="" layoutX="-4.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="54.0" text="25" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblRegionObj3" alignment="CENTER" layoutX="-1.0" layoutY="-13.0" prefHeight="15.0" prefWidth="54.0" text="Région 1-2" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane fx:id="pnJeu" layoutX="-1.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" visible="false">
+         <children>
+            <Pane layoutY="650.0" prefHeight="254.0" prefWidth="600.0">
+               <children>
+                  <Pane layoutX="10.0" layoutY="17.0" prefHeight="230.0" prefWidth="584.0" style="-fx-background-color: #FFD500; -fx-background-radius: 15;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="38.0" prefHeight="132.0" prefWidth="400.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="115.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesCartes/VideHeros.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="115.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="115.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="115.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER" layoutX="422.0" layoutY="25.0" prefHeight="181.0" prefWidth="148.0" spacing="15.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="127.0" style="-fx-background-color: #00D1FF; -fx-background-radius: 15; -fx-border-color: white; -fx-border-radius: 12; -fx-border-width: 4;" text="Placer" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="127.0" style="-fx-background-color: #FFE400; -fx-background-radius: 15; -fx-border-color: white; -fx-border-radius: 12; -fx-border-width: 4;" text="Améliorer" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="127.0" style="-fx-background-color: #CACACA; -fx-background-radius: 15; -fx-border-color: white; -fx-border-radius: 12; -fx-border-width: 4;" text="Fin du tour" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="170.0" prefHeight="47.0" prefWidth="402.0" spacing="7.0">
+                           <children>
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="99.0" text="Ressources : " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="35.0" text="10" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesAttributs/imgEtoile1.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="207.0" text="2 action(s) restante(s)" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <Label alignment="CENTER" layoutX="437.0" layoutY="208.0" prefHeight="17.0" prefWidth="123.0" text="ESC pour quitter" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <ImageView fx:id="imgGererCartesJeu" fitHeight="42.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/barreMonterDescendreCartestrue.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView fitHeight="700.0" fitWidth="600.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/fondNoir.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pnDebutTour" prefHeight="200.0" prefWidth="400.0" visible="false">
+               <children>
+                  <ImageView fx:id="imgBanniere" fitHeight="200.0" fitWidth="400.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../archives-CastleBoard/v2%20(animations+plateau%20personnalisable)/CastleBoard_GUMY/CastleBoard_GUMY/src/resources/images/fondBanniereEq1.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblTourDuJoueur" alignment="CENTER" layoutX="69.0" layoutY="75.0" prefHeight="50.0" prefWidth="272.0" text="Tour du joueur 1" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblNoTour" alignment="CENTER" layoutX="66.0" layoutY="125.0" prefHeight="30.0" prefWidth="272.0" text="Tour 1 / 40" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="100.0" layoutY="182.0" prefHeight="279.0" prefWidth="400.0" style="-fx-background-color: gold; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: orange; -fx-border-width: 8;" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="58.0" prefWidth="370.0" text="Améliorer votre Princesse au niveau 2 ?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="44.0" layoutY="72.0" prefHeight="111.0" prefWidth="305.0" style="-fx-background-color: #FFEA00; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: orange; -fx-border-width: 5;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="38.0" prefHeight="73.0" prefWidth="295.0" text="Chaque début de tour, partage sa couronne avec l'allié le plus proche" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="272.0" text="Partage de pouvoir" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button layoutX="44.0" layoutY="195.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="148.0" styleClass="btnRefuser" stylesheets="@../../resources/css/mesStyles.css" text="Annuler" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="200.0" layoutY="195.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="148.0" styleClass="btnBloque" stylesheets="@../../resources/css/mesStyles.css" text="Améliorer" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <HBox alignment="CENTER" layoutX="213.0" layoutY="242.0" prefHeight="26.0" prefWidth="123.0">
+                     <children>
+                        <Label prefHeight="80.0" prefWidth="44.0" text="Coût : " textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="44.0" prefWidth="6.0" text="3" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesAttributs/imgEtoile1.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="324.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/imgCadenas.png" />
+                     </image></ImageView>
+               </children></Pane>
+         </children></Pane>
+      <Pane fx:id="pnResultats" layoutX="54.0" layoutY="48.0" prefHeight="621.0" prefWidth="500.0" visible="false">
+         <children>
+            <ImageView fx:id="imgResultatsEtoile1" fitHeight="100.0" fitWidth="100.0" layoutX="120.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesNiveaux/etoileVide.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgResultatsEtoile2" fitHeight="100.0" fitWidth="100.0" layoutX="200.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesNiveaux/etoileVide.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgResultatsEtoile3" fitHeight="100.0" fitWidth="100.0" layoutX="283.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesNiveaux/etoileVide.png" />
+               </image>
+            </ImageView>
+            <ScrollPane hbarPolicy="NEVER" hmax="0.0" layoutX="80.0" layoutY="187.0" prefHeight="352.0" prefWidth="320.0" styleClass="sclMissions" stylesheets="@../../resources/css/mesStyles.css" vbarPolicy="NEVER">
+               <content>
+                  <Pane>
+                     <children>
+                        <GridPane layoutX="-640.0" prefHeight="352.0" prefWidth="960.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="320.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="320.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="320.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0" />
+                              <ScrollPane hbarPolicy="NEVER" styleClass="sclMissions" stylesheets="@../../resources/css/mesStyles.css" vbarPolicy="NEVER" GridPane.columnIndex="1">
+                                 <content>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="320.0">
+                                       <children>
+                                          <VBox alignment="TOP_CENTER" layoutX="16.0" prefHeight="395.0" prefWidth="281.0" spacing="5.0" />
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
+                              <GridPane GridPane.columnIndex="2">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="74.33334350585938" minHeight="10.0" prefHeight="73.66665649414062" valignment="CENTER" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="55.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="-Infinity" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="-Infinity" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="-Infinity" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <VBox alignment="CENTER" GridPane.columnIndex="2">
+                                       <children>
+                                          <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesAttributs/imgDegatsInfliges.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label prefHeight="30.0" prefWidth="48.0" text="Dégâts infligés" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                             <font>
+                                                <Font name="System Bold" size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" GridPane.columnIndex="1">
+                                       <children>
+                                          <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesAttributs/imgDegatsSubis.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label prefHeight="30.0" prefWidth="48.0" text="Dégâts subis" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                             <font>
+                                                <Font name="System Bold" size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" GridPane.columnIndex="3">
+                                       <children>
+                                          <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesAttributs/imgSoinProcure.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label prefHeight="30.0" prefWidth="48.0" text="Soin procuré" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                             <font>
+                                                <Font name="System Bold" size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" GridPane.columnIndex="4">
+                                       <children>
+                                          <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesAttributs/imgSoinRecu.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label prefHeight="30.0" prefWidth="48.0" text="Soin obtenu" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                             <font>
+                                                <Font name="System Bold" size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" GridPane.columnIndex="5">
+                                       <children>
+                                          <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesAttributs/imgParcoursTotal.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label prefHeight="30.0" prefWidth="48.0" text="Parcours total" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                             <font>
+                                                <Font name="System Bold" size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <Label alignment="CENTER" prefHeight="30.0" prefWidth="48.0" text="Total" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </Pane>
+               </content>
+            </ScrollPane>
+            <Button fx:id="btnResultats" layoutX="180.0" layoutY="557.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="123.0" style="-fx-background-color: #23A5FF; -fx-background-radius: 15; -fx-border-color: white; -fx-border-radius: 15; -fx-border-width: 5;" text="Suite" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <HBox alignment="CENTER_LEFT" layoutX="117.0" layoutY="145.0" prefHeight="40.0" prefWidth="261.0">
+               <children>
+                  <Label text="Objectifs" textFill="#ff8400">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.59" />
+                     </effect>
+                  </Label>
+                  <Label text="|" textFill="#ff8400">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.59" />
+                     </effect>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Missions" textFill="#ff8400">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.59" />
+                     </effect>
+                  </Label>
+                  <Label text="|" textFill="#ff8400">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.59" />
+                     </effect>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Complet" textFill="#ff8400">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.59" />
+                     </effect>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane fx:id="pnDuel" layoutX="22.0" layoutY="11.0" prefHeight="676.0" prefWidth="555.0" style="-fx-background-color: #D5D5D5; -fx-background-radius: 25;" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="27.0" layoutY="36.0" prefHeight="58.0" prefWidth="512.0" text="Duel - Local" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+            <Pane layoutX="27.0" layoutY="115.0" prefHeight="197.0" prefWidth="512.0" style="-fx-background-color: grey; -fx-background-radius: 15;">
+               <children>
+                  <Label layoutX="30.0" layoutY="14.0" text="Joueur 1" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" layoutX="29.0" layoutY="75.0" prefHeight="104.0" prefWidth="362.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="96.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesCartes/VideHeros.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="96.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="96.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="96.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <VBox alignment="CENTER" layoutX="391.0" layoutY="61.0" prefHeight="132.0" prefWidth="73.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="52.0" styleClass="btnAccepter" stylesheets="@../../resources/css/mesStyles.css">
+                           <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/logoModifier.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="53.0" styleClass="btnAccepter" stylesheets="@../../resources/css/mesStyles.css">
+                           <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/logoAlea.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <HBox alignment="TOP_RIGHT" layoutX="167.0" layoutY="29.0" prefHeight="25.0" prefWidth="224.0">
+                     <children>
+                        <Label text="Disposition : " textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Ligne" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Button layoutX="402.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="btnAccepter" stylesheets="@../../resources/css/mesStyles.css">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/logoModifier.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane layoutX="28.0" layoutY="320.0" prefHeight="197.0" prefWidth="512.0" style="-fx-background-color: grey; -fx-background-radius: 15;">
+               <children>
+                  <Label layoutX="30.0" layoutY="14.0" text="Joueur 2" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" layoutX="29.0" layoutY="75.0" prefHeight="104.0" prefWidth="362.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="96.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesCartes/VideHeros.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="96.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="96.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="96.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <VBox alignment="CENTER" layoutX="391.0" layoutY="61.0" prefHeight="132.0" prefWidth="73.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="52.0" styleClass="btnAccepter" stylesheets="@../../resources/css/mesStyles.css">
+                           <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/logoModifier.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="53.0" styleClass="btnAccepter" stylesheets="@../../resources/css/mesStyles.css">
+                           <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/logoAlea.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <HBox alignment="TOP_RIGHT" layoutX="167.0" layoutY="29.0" prefHeight="25.0" prefWidth="224.0">
+                     <children>
+                        <Label text="Disposition : " textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Ligne" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Button layoutX="402.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="btnAccepter" stylesheets="@../../resources/css/mesStyles.css">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/logoModifier.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Label layoutX="36.0" layoutY="534.0" text="Mode de jeu" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Pane layoutX="28.0" layoutY="553.0" prefHeight="73.0" prefWidth="312.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
+               <children>
+                  <Label alignment="CENTER_RIGHT" layoutX="49.0" prefHeight="73.0" prefWidth="192.0" text="DUEL CLASSIQUE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="42.0" fitWidth="53.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/logoJeu2.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="255.0" layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="btnAccepter" stylesheets="@../../resources/css/mesStyles.css">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/logoModifier.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Button layoutX="369.0" layoutY="553.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="170.0" styleClass="btnAmeliorer" stylesheets="@../../resources/css/mesStyles.css" text="Commencer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="481.0" layoutY="14.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="60.0" styleClass="btnRefuser" stylesheets="@../../resources/css/mesStyles.css" text="X" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="pnEquipe" layoutX="29.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="541.0" style="-fx-background-color: #D5D5D5; -fx-background-radius: 25;" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="79.0" prefWidth="529.0" text="Équipe (0/50)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="44.0" />
+               </font>
+            </Label>
+            <HBox layoutX="21.0" layoutY="108.0" prefHeight="168.0" prefWidth="500.0" style="-fx-background-color: #BF8100; -fx-background-radius: 20;">
+               <padding>
+                  <Insets top="10.0" />
+               </padding></HBox>
+            <ScrollPane hbarPolicy="NEVER" layoutX="21.0" layoutY="283.0" prefHeight="352.0" prefWidth="512.0" styleClass="barreDefilement" stylesheets="@../../resources/css/mesStyles.css" vbarPolicy="ALWAYS" visible="false">
+               <content>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="499.0" style="-fx-background-color: #E2E2E2;">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <Pane layoutX="23.0" layoutY="282.0" prefHeight="352.0" prefWidth="500.0" style="-fx-background-color: #DFDFDF;" visible="false">
+               <children>
+                  <Label layoutX="83.0" layoutY="14.0" text="Choisissez une carte à remplacer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="188.0" layoutY="53.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="125.0">
+                     <children>
+                        <ImageView fitHeight="112.0" fitWidth="100.0" layoutX="13.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesCartes/VidePerso.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="31.0" fitWidth="29.0" layoutX="12.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesAttributs/imgEtoile0.png" />
+                           </image>
+                        </ImageView>
+                        <ProgressBar layoutX="41.0" layoutY="114.0" prefHeight="31.0" prefWidth="67.0" progress="0.0" styleClass="pgbCartes" stylesheets="@../../resources/css/mesStyles.css" />
+                        <Label alignment="CENTER" layoutX="45.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="60.0" text="0 / 0" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgFondQuitterInfos" fitHeight="700.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../resources/images/fondNoir.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Pane fx:id="pnInfos" layoutX="62.0" layoutY="63.0" prefHeight="580.0" prefWidth="479.0" style="-fx-background-color: lightgrey; -fx-background-radius: 15;" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="214.0" layoutY="30.0" prefHeight="54.0" prefWidth="249.0" text="Le Coureur" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="141.0" layoutX="59.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesCartes/VideHeros.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="212.0" layoutY="78.0" prefHeight="27.0" prefWidth="249.0" text="Niveau 1" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="227.0" layoutY="113.0" prefHeight="100.0" prefWidth="224.0" text="Un sportif surentraîné, pouvant courir sur tout le plateau lorsque l'envie lui prend. Il partage même un peu de son talent aux alliés à proximité." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <ProgressBar layoutX="59.0" layoutY="213.0" prefHeight="40.0" prefWidth="123.0" progress="0.0" styleClass="pgbCartes" stylesheets="@../../resources/css/mesStyles.css" />
+            <ImageView fitHeight="53.0" fitWidth="47.0" layoutX="40.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesAttributs/imgCouronne.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="68.0" layoutY="215.0" prefHeight="36.0" prefWidth="109.0" text="0 / 5" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="259.0" text="Statistiques de base :" />
+            <Pane layoutX="30.0" layoutY="277.0" prefHeight="286.0" prefWidth="183.0" style="-fx-background-color: #ADADAD; -fx-background-radius: 15;" />
+            <Pane layoutX="31.0" layoutY="481.0" prefHeight="83.0" prefWidth="183.0" style="-fx-background-color: gold; -fx-background-radius: 15;" />
+            <GridPane layoutX="31.0" layoutY="278.0" prefHeight="280.0" prefWidth="183.0" style="-fx-border-radius: 15; -fx-border-color: grey; -fx-border-width: 3;">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="86.0" minWidth="2.0" prefWidth="44.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="133.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0" valignment="TOP" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesAttributs/imgCoeurPV.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../resources/images/texturesAttributs/imgEpeeDg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../resources/images/texturesAttributs/imgVitesse.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../resources/images/texturesAttributs/imgPortee.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../resources/images/texturesAttributs/jetonPuissance/100%25.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="137.0" text="Débloqué au niveau 3" textFill="RED">
+                           <font>
+                              <Font name="System Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="21.0" prefWidth="125.0" text="Sprint" textAlignment="CENTER" textFill="#ff7600" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="55.0" prefWidth="136.0" text="Peut se déplacer sur tout le plateau après avoir attaqué, ou été attaqué 3 fois" textAlignment="CENTER" textFill="#ff7600" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="9.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" GridPane.columnIndex="1">
+                     <children>
+                        <Label text="12" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="+3" textFill="#26ff00">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <effect>
+                              <Glow level="1.0" />
+                           </effect>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="1" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="   " textFill="#26ff00">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <effect>
+                              <Glow level="1.0" />
+                           </effect>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label text="2" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="   " textFill="#26ff00">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <effect>
+                              <Glow level="1.0" />
+                           </effect>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <children>
+                        <Label text="1" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="   " textFill="#26ff00">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <effect>
+                              <Glow level="1.0" />
+                           </effect>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+            <Label layoutX="247.0" layoutY="211.0" text="Améliorations : " />
+            <Pane layoutX="234.0" layoutY="230.0" prefHeight="261.0" prefWidth="231.0" style="-fx-background-color: #ADADAD; -fx-background-radius: 15;" />
+            <Pane layoutX="240.0" layoutY="233.0" prefHeight="83.0" prefWidth="218.0" style="-fx-background-color: gold; -fx-background-radius: 15;" />
+            <Pane layoutX="240.0" layoutY="319.0" prefHeight="83.0" prefWidth="218.0" style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Pane layoutX="241.0" layoutY="406.0" prefHeight="83.0" prefWidth="218.0" style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <GridPane layoutX="234.0" layoutY="228.0" prefHeight="261.0" prefWidth="231.0" style="-fx-border-radius: 15; -fx-border-color: grey; -fx-border-width: 3;">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="86.0" minWidth="2.0" prefWidth="55.33331298828125" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="169.66668701171875" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="87.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="87.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="87.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesAttributs/imgEtoile1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../resources/images/texturesAttributs/imgEtoile2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../resources/images/texturesAttributs/imgEtoile3.png" />
+                     </image>
+                  </ImageView>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="172.0" text="Sprint" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="54.0" prefWidth="157.0" text="Bla bla bla lvl 1" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="172.0" text="Sprint" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="54.0" prefWidth="157.0" text="Bla Bla bla lvl 2" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="172.0" text="Sprint" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="54.0" prefWidth="157.0" text="Bla Bla Bla lvl 3" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+            <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="350.0" layoutY="500.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="109.0" styleClass="btnAmeliorer" stylesheets="@../../resources/css/mesStyles.css" text="Améliorer" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <HBox alignment="CENTER_LEFT" layoutX="349.0" layoutY="502.0" prefHeight="30.0" prefWidth="111.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="59.0" text="100" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <Button alignment="CENTER" contentDisplay="TOP" layoutX="234.0" layoutY="501.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="109.0" styleClass="btnAccepter" stylesheets="@../../resources/css/mesStyles.css" text="Utiliser" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Pane layoutX="378.0" layoutY="-45.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="100.0" style="-fx-background-color: lightgrey; -fx-background-radius: 25;">
+               <children>
+                  <Label fx:id="lblRessPiecesEquipe" layoutX="22.0" prefHeight="25.0" prefWidth="73.0" text="1000" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="-16.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="pnMissions" layoutX="28.0" layoutY="11.0" prefHeight="676.0" prefWidth="555.0" visible="false">
+         <children>
+            <ImageView fitHeight="676.0" fitWidth="553.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesMissions/BaseMissions2.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="-35.0" layoutY="114.0" prefHeight="90.0" prefWidth="160.0" rotate="-90.0" text="Globales" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label alignment="CENTER" layoutX="-35.0" layoutY="283.0" prefHeight="90.0" prefWidth="160.0" rotate="-90.0" text="Région" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label alignment="CENTER" layoutX="-35.0" layoutY="453.0" prefHeight="90.0" prefWidth="160.0" rotate="-90.0" text="Perso" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Button layoutX="10.0" layoutY="605.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" styleClass="btnRefuser" stylesheets="@../../resources/css/mesStyles.css" text="X" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label alignment="CENTER" layoutX="121.0" layoutY="28.0" prefHeight="73.0" prefWidth="344.0" text="Liste des Missions" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <ScrollPane hbarPolicy="NEVER" layoutX="136.0" layoutY="139.0" prefHeight="463.0" prefWidth="305.0" styleClass="sclMissions" stylesheets="@../../resources/css/mesStyles.css" vbarPolicy="NEVER">
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="767.0" prefWidth="305.0" spacing="5.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </VBox>
+               </content></ScrollPane>
+            <Button fx:id="btnNotifBoutique12" ellipsisString="99" layoutX="-6.0" layoutY="67.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="41.0" style="-fx-background-color: red;" text="2" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNotifBoutique11" ellipsisString="99" layoutX="-10.0" layoutY="240.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="41.0" style="-fx-background-color: red;" text="3" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNotifBoutique1" ellipsisString="99" layoutX="-11.0" layoutY="408.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="41.0" style="-fx-background-color: red;" text="11" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="pnBadges" layoutX="28.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="541.0" style="-fx-background-color: #D5D5D5; -fx-background-radius: 25;" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="79.0" prefWidth="529.0" text="Badges (0/50)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="44.0" />
+               </font>
+            </Label>
+            <ScrollPane hbarPolicy="NEVER" layoutX="21.0" layoutY="102.0" prefHeight="533.0" prefWidth="512.0" styleClass="barreDefilement" stylesheets="@../../resources/css/mesStyles.css" vbarPolicy="ALWAYS">
+               <content>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="499.0" style="-fx-background-color: #E2E2E2;">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgFondQuitterInfosBadges" fitHeight="700.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../resources/images/fondNoir.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Pane fx:id="pnInfosBadge" layoutX="62.0" layoutY="63.0" prefHeight="580.0" prefWidth="479.0" style="-fx-background-color: lightgrey; -fx-background-radius: 15;" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="23.0" prefHeight="63.0" prefWidth="432.0" text="Maîtrise de votre Maître des sabres" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Pane layoutX="26.0" layoutY="86.0" prefHeight="181.0" prefWidth="432.0" style="-fx-background-color: violet; -fx-background-radius: 15;">
+               <children>
+                  <ImageView fitHeight="124.0" fitWidth="123.0" layoutX="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesBadges/imgObsidienne.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="51.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesPersos/Le%20Coureur/Default/logo.png" />
+                     </image>
+                  </ImageView>
+                  <ProgressBar layoutX="51.0" layoutY="131.0" prefHeight="36.0" prefWidth="95.0" progress="0.34" styleClass="pgbCartes" stylesheets="@../../resources/css/mesStyles.css" />
+                  <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="23.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesRecompenses/imgPointDeMaitrise.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="53.0" layoutY="128.0" prefHeight="40.0" prefWidth="93.0" text="170 / 500" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_CENTER" layoutX="176.0" layoutY="14.0" prefHeight="58.0" prefWidth="249.0" text="Collectez des points de maîtrise pour améliorer votre badge, et ainsi débloquer de nouvelles récompenses !" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="179.0" layoutY="83.0" prefHeight="90.0" prefWidth="241.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="162.33331298828125" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="47.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="34.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="163.0" text="Jouer une partie" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="165.0" text="Se déplacer 10 fois en une partie" textAlignment="RIGHT" textFill="WHITE" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="10.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="165.0" text="Compléter une mission" textAlignment="RIGHT" textFill="WHITE" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="42.0" text="10" textFill="WHITE" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="42.0" text="25" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="42.0" text="???" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../../resources/images/texturesRecompenses/imgPointDeMaitrise.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../resources/images/texturesRecompenses/imgPointDeMaitrise.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../../resources/images/texturesRecompenses/imgPointDeMaitrise.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+               </children>
+            </Pane>
+            <Button layoutX="157.0" layoutY="490.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="170.0" styleClass="btnAmeliorer" stylesheets="@../../resources/css/mesStyles.css" text="Améliorer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Pane layoutX="5.0" layoutY="275.0" prefHeight="184.0" prefWidth="470.0" style="-fx-background-color: grey; -fx-background-radius: 15;">
+               <children>
+                  <Pane layoutX="78.0" layoutY="1.0" prefHeight="181.0" prefWidth="78.0" style="-fx-background-color: gold; -fx-background-radius: 15;" />
+                  <GridPane prefHeight="184.0" prefWidth="470.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="78.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="78.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="78.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="78.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="78.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="78.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="67.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="38.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="79.0" minHeight="10.0" prefHeight="79.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="407.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="6" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/fondLigne.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/imgBronze.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/imgArgent.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/imgOr.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/imgDiamant.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/imgRubis.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/imgObsidienne.png" />
+                           </image>
+                        </ImageView>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #545454; -fx-background-radius: 15;" styleClass="pnObjDifficile" stylesheets="@../../resources/css/mesStyles.css" GridPane.rowIndex="2">
+                           <children>
+                              <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesRecompenses/imgSacoche.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER_RIGHT" ellipsisString="" layoutX="-4.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="54.0" text="1" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="-1.0" layoutY="-13.0" prefHeight="15.0" prefWidth="54.0" text="Région 1" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #545454; -fx-background-radius: 15;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesRecompenses/imgSacoche.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER_RIGHT" ellipsisString="" layoutX="-4.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="54.0" text="1" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="-1.0" layoutY="-13.0" prefHeight="15.0" prefWidth="54.0" text="Région 1" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #545454; -fx-background-radius: 15;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesRecompenses/imgSacoche.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER_RIGHT" ellipsisString="" layoutX="-4.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="54.0" text="1" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="-1.0" layoutY="-13.0" prefHeight="15.0" prefWidth="54.0" text="Région 1" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #545454; -fx-background-radius: 15;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <children>
+                              <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesRecompenses/imgSacoche.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER_RIGHT" ellipsisString="" layoutX="-4.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="54.0" text="1" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="-1.0" layoutY="-13.0" prefHeight="15.0" prefWidth="54.0" text="Région 1" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #545454; -fx-background-radius: 15;" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <children>
+                              <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesRecompenses/imgSacoche.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER_RIGHT" ellipsisString="" layoutX="-4.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="54.0" text="1" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="-1.0" layoutY="-13.0" prefHeight="15.0" prefWidth="54.0" text="Région 1" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="54.0" style="-fx-background-color: #545454; -fx-background-radius: 15;" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                           <children>
+                              <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/images/texturesRecompenses/imgSacoche.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER_RIGHT" ellipsisString="" layoutX="-4.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="54.0" text="1" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="-1.0" layoutY="-13.0" prefHeight="15.0" prefWidth="54.0" text="Région 1" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/separation.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/separation.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/separation.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/separation.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/separation.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../resources/images/texturesBadges/separation.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+               </children></Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="pnMagasin" layoutX="28.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="541.0" style="-fx-background-color: #D5D5D5; -fx-background-radius: 25;" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="79.0" prefWidth="529.0" text="Magasin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="44.0" />
+               </font>
+            </Label>
+            <ScrollPane hbarPolicy="NEVER" layoutX="21.0" layoutY="102.0" prefHeight="533.0" prefWidth="500.0" styleClass="barreDefilement" stylesheets="@../../resources/css/mesStyles.css" vbarPolicy="NEVER">
+               <content>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="498.0" spacing="10.0" style="-fx-background-color: #E2E2E2;">
+                     <children>
+                        <Pane prefHeight="40.0" prefWidth="478.0" styleClass="pnSectionMission" stylesheets="@../../resources/css/mesStyles.css">
+                           <children>
+                              <Label layoutX="14.0" prefHeight="40.0" prefWidth="423.0" text="Offres en vrac" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <GridPane prefHeight="238.0" prefWidth="478.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="120.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="120.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css">
+                                 <children>
+                                    <ImageView fitHeight="72.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesRecompenses/imgCoffret.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" layoutX="53.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="56.0" text="x30" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" layoutX="22.0" layoutY="84.0" prefHeight="24.0" prefWidth="67.0">
+                                       <children>
+                                          <Label text="500" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css" GridPane.columnIndex="1">
+                                 <children>
+                                    <ImageView fitHeight="72.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesRecompenses/imgCoffret.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" layoutX="53.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="56.0" text="x30" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" layoutX="22.0" layoutY="84.0" prefHeight="24.0" prefWidth="67.0">
+                                       <children>
+                                          <Label text="GRATUIT" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css" GridPane.columnIndex="2">
+                                 <children>
+                                    <ImageView fitHeight="72.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesRecompenses/imgCoffret.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" layoutX="53.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="56.0" text="x30" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" layoutX="22.0" layoutY="84.0" prefHeight="24.0" prefWidth="67.0">
+                                       <children>
+                                          <Label text="500" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css" GridPane.columnIndex="3">
+                                 <children>
+                                    <ImageView fitHeight="72.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesRecompenses/imgCoffret.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" layoutX="53.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="56.0" text="x30" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" layoutX="22.0" layoutY="84.0" prefHeight="24.0" prefWidth="67.0">
+                                       <children>
+                                          <Label text="500" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css" GridPane.rowIndex="1">
+                                 <children>
+                                    <ImageView fitHeight="72.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesRecompenses/imgCoffret.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" layoutX="53.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="56.0" text="x30" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" layoutX="22.0" layoutY="84.0" prefHeight="24.0" prefWidth="67.0">
+                                       <children>
+                                          <Label text="500" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <ImageView fitHeight="72.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesRecompenses/imgCoffret.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" layoutX="53.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="56.0" text="x30" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" layoutX="22.0" layoutY="84.0" prefHeight="24.0" prefWidth="67.0">
+                                       <children>
+                                          <Label text="5000" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <children>
+                                    <ImageView fitHeight="72.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesRecompenses/imgCoffret.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" layoutX="53.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="56.0" text="x30" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" layoutX="22.0" layoutY="84.0" prefHeight="24.0" prefWidth="67.0">
+                                       <children>
+                                          <Label text="500" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <children>
+                                    <ImageView fitHeight="72.0" fitWidth="74.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesRecompenses/imgCoffret.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" layoutX="53.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="56.0" text="x30" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" layoutX="22.0" layoutY="84.0" prefHeight="24.0" prefWidth="67.0">
+                                       <children>
+                                          <Label text="500" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                           </children>
+                        </GridPane>
+                        <Pane prefHeight="40.0" prefWidth="478.0" styleClass="pnSectionMission" stylesheets="@../../resources/css/mesStyles.css">
+                           <children>
+                              <Label layoutX="14.0" prefHeight="40.0" prefWidth="305.0" text="Offres spéciales" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="478.0" spacing="10.0">
+                           <children>
+                              <Pane prefHeight="214.0" prefWidth="478.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="36.0" layoutY="7.0" prefHeight="36.0" prefWidth="407.0" text="Offre Carte &amp; Costume" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="229.0" layoutY="76.0" text="+" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="61.0" layoutY="161.0" prefHeight="21.0" prefWidth="123.0" text="Apiculteur royal" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="98.0" layoutY="182.0" text="x 100" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="308.0" layoutY="161.0" text="Costume Plongeur" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="80.0" fitWidth="72.0" layoutX="103.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" rotate="13.0">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Apiculteur%20Royal/Default/carte.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="80.0" fitWidth="72.0" layoutX="87.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" rotate="6.0">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Apiculteur%20Royal/Default/carte.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="80.0" fitWidth="72.0" layoutX="68.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Apiculteur%20Royal/Default/carte.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="63.0" fitWidth="61.0" layoutX="300.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Ruche/Default/poseStatique1.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="63.0" fitWidth="60.0" layoutX="399.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Abeille/Default/poseStatique1.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="132.0" fitWidth="111.0" layoutX="318.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Apiculteur%20Royal/Default/poseStatique1.png" />
+                                       </image>
+                                    </ImageView>
+                                    <HBox alignment="CENTER" layoutX="190.0" layoutY="168.0" prefHeight="45.0" prefWidth="100.0" styleClass="hbOffrePrix" stylesheets="@../../resources/css/mesStyles.css">
+                                       <children>
+                                          <Label alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="47.0" text="1200" textAlignment="RIGHT" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="37.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgRubis.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="214.0" prefWidth="478.0" styleClass="pnOffreCostume" stylesheets="@../../resources/css/mesStyles.css">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="36.0" layoutY="7.0" prefHeight="36.0" prefWidth="407.0" text="Offre Carte &amp; Costume" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="229.0" layoutY="76.0" text="+" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="61.0" layoutY="161.0" prefHeight="21.0" prefWidth="123.0" text="Archère" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="61.0" layoutY="180.0" prefHeight="21.0" prefWidth="123.0" text="x 11" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="308.0" layoutY="161.0" prefHeight="21.0" prefWidth="133.0" text="Costume Sirène" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="96.0" fitWidth="83.0" layoutX="100.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" rotate="15.0">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Archère/Default/carte.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="96.0" fitWidth="83.0" layoutX="80.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" rotate="7.5">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Archère/Default/carte.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="96.0" fitWidth="83.0" layoutX="60.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Archère/Default/carte.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="63.0" fitWidth="61.0" layoutX="300.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Ruche/Default/poseStatique1.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="63.0" fitWidth="60.0" layoutX="391.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" rotate="30.7">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Archère/Default/projectileSuper.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="132.0" fitWidth="111.0" layoutX="318.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/images/texturesPersos/Archère/Default/poseStatique.png" />
+                                       </image>
+                                    </ImageView>
+                                    <HBox alignment="CENTER" layoutX="190.0" layoutY="168.0" prefHeight="45.0" prefWidth="100.0" styleClass="hbOffrePrix" stylesheets="@../../resources/css/mesStyles.css">
+                                       <children>
+                                          <Label alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="47.0" text="1600" textAlignment="RIGHT" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="37.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../resources/images/texturesRecompenses/imgRubis.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="40.0" prefWidth="478.0" styleClass="pnSectionMission" stylesheets="@../../resources/css/mesStyles.css">
+                           <children>
+                              <Label layoutX="14.0" prefHeight="40.0" prefWidth="305.0" text="Trésorerie" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="173.0" prefWidth="478.0" style="-fx-background-color: lightgrey; -fx-background-radius: 15;">
+                           <children>
+                              <Label layoutX="29.0" layoutY="14.0" prefHeight="72.0" prefWidth="432.0" text="Entrez un code secret pour reçevoir des récompenses !" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <PasswordField alignment="CENTER" layoutX="118.0" layoutY="102.0" prefHeight="49.0" prefWidth="133.0" promptText="XXXXXXX" style="-fx-background-radius: 10;">
+                                 <font>
+                                    <Font name="System Bold" size="23.0" />
+                                 </font></PasswordField>
+                              <Button alignment="CENTER" layoutX="269.0" layoutY="102.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="83.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="btnAccepter" stylesheets="@../../resources/css/mesStyles.css" text="Valider" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <VBox fx:id="vbRessources1" layoutX="427.0" layoutY="14.0" prefHeight="79.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <Pane prefHeight="24.0" prefWidth="100.0" style="-fx-background-color: grey; -fx-background-radius: 25;">
+                     <children>
+                        <Label fx:id="lblRessPieces1" layoutX="22.0" prefHeight="25.0" prefWidth="73.0" text="1000" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="-16.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="24.0" prefWidth="100.0" style="-fx-background-color: grey; -fx-background-radius: 25;">
+                     <children>
+                        <Label fx:id="lblRessRubis1" layoutX="22.0" prefHeight="25.0" prefWidth="73.0" text="1000" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="-16.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesRecompenses/imgRubis.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane fx:id="pnRecupRecompense" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" visible="false">
+         <children>
+            <ImageView fitHeight="700.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesRecompenses/fondRec/fondRecupRecompense.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="90.0" fitWidth="93.0" layoutX="348.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesRecompenses/imgCartesRestantes.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="347.0" layoutY="514.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="93.0" text="1" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="42.0" />
+               </font>
+            </Label>
+            <VBox alignment="TOP_CENTER" layoutX="92.0" layoutY="20.0" prefHeight="540.0" prefWidth="432.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="168.0" prefWidth="432.0" text="Maître des sabres" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="52.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ImageView fitHeight="168.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                     </image>
+                  </ImageView>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="151.0">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <ProgressBar prefHeight="45.0" prefWidth="150.0" progress="0.0" styleClass="pgbCartes" stylesheets="@../../resources/css/mesStyles.css" />
+                        <Label alignment="CENTER" layoutX="2.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="142.0" text="0 / 0" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="63.0" fitWidth="54.0" layoutX="-25.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/texturesRecompenses/imgPieces.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <Label layoutX="352.0" layoutY="327.0" text="x1" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="50.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="65.0" layoutY="12.0" prefHeight="49.0" prefWidth="479.0" text="NOUVELLE CARTE DÉBLOQUÉE !" textFill="#f1ff00">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="73.0" fitWidth="72.0" layoutX="358.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/texturesRecompenses/infosCoffreProba.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="700.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/fondNoir.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <GridPane layoutX="92.0" layoutY="150.0" prefHeight="477.0" prefWidth="432.0" style="-fx-background-radius: 15; -fx-background-color: lightgrey;">
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="266.66668701171875" minWidth="10.0" prefWidth="258.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="166.3333740234375" minWidth="10.0" prefWidth="145.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="87.66665649414062" minHeight="-Infinity" prefHeight="87.66665649414062" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="98.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" prefHeight="88.0" prefWidth="446.0" text="Chances d'obtention" textFill="WHITE" GridPane.columnSpan="2">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="98.0" prefWidth="381.0" text="À chaque tirage, les chances sont définies selon le nombre de cartes déjà trouvées de chaque type. Les cartes héros sont séparées des cartes persos, et les chances sont départagées ainsi : perso doublon (60%) et nouveau perso (10%), héros doublon (25%) et nouveau héros (5%). Les cartes héros sont distribuées par 5. " textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="436.0" text="Persos et héros déjà débloqués : 1 héros et 3 perso(s)" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="234.0" text="Chance de perso déjà débloqué :" textFill="WHITE" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="62.0" prefWidth="178.0" text="60.00 %" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="234.0" text="Chance de héros déjà débloqué :" textFill="WHITE" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label prefHeight="62.0" prefWidth="178.0" text="20.00 %" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="436.0" text="Persos et héros à trouver : 2 héros et 2 perso(s)" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="234.0" text="Chance de nouveau perso :" textFill="WHITE" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label prefHeight="62.0" prefWidth="178.0" text="15.00 %" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="234.0" text="Chance de nouveau héros :" textFill="WHITE" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label prefHeight="62.0" prefWidth="178.0" text="5.00 %" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="338.0" text="Cette Sacoche peut contenir n'importe quelle carte de la région désertique (Région 2). Contient 2 tirages." textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+   </children>
+</Pane>
