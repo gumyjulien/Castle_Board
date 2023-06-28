@@ -2,9 +2,15 @@
 A simple strategic game made with JavaFX.
 
 All the code is available in ./src/app and is seperated like this : 
-  ./presentation containing all the view controllers
-  ./workers containing all the workers used
-  The main file for the view is ./presentation/MainView.fxml
+
+./presentation containing all the view controllers
+
+
+./workers containing all the workers used
+
+
+The main file for the view is ./presentation/MainView.fxml
+
 
 The game can be started using the .jar file located in ./dist.
 
